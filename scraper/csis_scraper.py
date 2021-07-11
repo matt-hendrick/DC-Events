@@ -4,7 +4,7 @@ import json
 from dateutil import parser
 
 
-def mei_scraper():
+def csis_scraper():
 
     eventList = []
 
@@ -36,4 +36,4 @@ def mei_scraper():
         json.dump(data, file)
 
 
-mei_scraper()
+csis_scraper()
