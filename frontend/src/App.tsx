@@ -15,7 +15,11 @@ function App() {
         return (
           <Card
             title={item.title}
-            dateTime={dateTime.toLocaleString()}
+            dateTime={
+              dateTime.getHours() !== 0
+                ? dateTime.toLocaleString()
+                : dateTime.toLocaleDateString()
+            }
             entity={item.entity}
             link={item.link}
           />
