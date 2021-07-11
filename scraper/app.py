@@ -4,15 +4,13 @@ import json
 import re
 import time
 
-eventList = {}
+eventList = []
 
 url = "https://www.brookings.edu/events/upcoming/"
 
 page = requests.get(url)
 
 soup = BeautifulSoup(page.content, 'html.parser')
-
-dates = []
 
 for event in soup.find_all("a", class_="event-content"):
     title = event.find("h4").get_text()
@@ -21,8 +19,8 @@ for event in soup.find_all("a", class_="event-content"):
     time = event.find_all("time")[0].get_text(
     ).strip() + " - " + event.find_all("time")[1].get_text().strip()
     link = event.get("href")
-    eventList[title] = {"date": date,
-                        "time": time, "title": title, "link": link}
+    eventList.append({"date": date,
+                      "time": time, "title": title, "link": link})
 
 
 json_string = json.dumps(eventList)
