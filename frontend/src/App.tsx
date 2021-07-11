@@ -1,9 +1,13 @@
-import eventList from './eventList.json';
+import eventList from './event_list.json';
 
 // Components
 import Card from './components/Card/Card';
 
 function App() {
+  eventList.sort(
+    (a, b) => new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()
+  );
+
   return (
     <div>
       {eventList.map((item: any) => {
