@@ -16,9 +16,8 @@ def csis_scraper():
 
     for event in soup.find_all("div", class_="ds-right"):
         title = event.find("div", class_="teaser__title").get_text()
-        dateTime = parser.parse(event.find(
-            "span", class_="date-display-single").get("content"))
-        dateTime = str(dateTime)
+        dateTime = str(parser.parse(event.find(
+            "span", class_="date-display-single").get("content")))
         entity = "CSIS"
         entityType = "Think Tank"
         link = "https://www.csis.org" + event.find("a").get("href")
