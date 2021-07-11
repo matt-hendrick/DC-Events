@@ -16,13 +16,12 @@ def brookings_scraper():
 
     for event in soup.find_all("a", class_="event-content"):
         title = event.find("h4").get_text()
-
         dateTime = parser.parse(event.find(
             "div", class_="event-date list").get("content"))
         entity = "The Brookings Institution"
-        type = "Think Tank"
+        entityType = "Think Tank"
         link = event.get("href")
-        eventList.append({"entity": entity, "type": type,
+        eventList.append({"entity": entity, "type": entityType,
                          "dateTime": dateTime, "title": title, "link": link})
 
     json_string = json.dumps(eventList, default=str)

@@ -22,9 +22,9 @@ def mei_scraper():
 
             dateTime = str(dateTime)
             entity = " Middle East Institute"
-            type = "Think Tank"
+            entityType = "Think Tank"
             link = event.find("a").get("href")
-            eventList.append({"entity": entity, "type": type,
+            eventList.append({"entity": entity, "type": entityType,
                               "dateTime": dateTime, "title": title, "link": link})
 
     filename = "event_list.json"
@@ -36,9 +36,6 @@ def mei_scraper():
 
     with open(filename, "w") as file:
         json.dump(data, file)
-
-    # with open("event_list.json", "a") as outfile:
-    #     outfile.write(json_string)
 
 
 mei_scraper()
