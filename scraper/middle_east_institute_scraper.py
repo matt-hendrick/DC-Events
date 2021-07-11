@@ -21,7 +21,7 @@ def mei_scraper():
             title = event.find("h4").get_text()
 
             dateTime = str(dateTime)
-            entity = " Middle East Institute"
+            entity = "Middle East Institute"
             entityType = "Think Tank"
             link = event.find("a").get("href")
             eventList.append({"entity": entity, "type": entityType,
