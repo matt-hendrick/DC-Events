@@ -4,7 +4,7 @@ import json
 from dateutil import parser
 
 
-def brookingsScraper():
+def brookings_scraper():
 
     eventList = []
 
@@ -27,8 +27,8 @@ def brookingsScraper():
 
     json_string = json.dumps(eventList, default=str)
 
-    with open("eventList.json", "w") as outfile:
+    with open("event_list.json", "w") as outfile:
         outfile.write(json_string)
 
 
-brookingsScraper()
+brookings_scraper()

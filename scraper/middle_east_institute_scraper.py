@@ -4,7 +4,7 @@ import json
 from dateutil import parser
 
 
-def MEIScraper():
+def mei_scraper():
 
     eventList = []
 
@@ -27,7 +27,7 @@ def MEIScraper():
             eventList.append({"entity": entity, "type": type,
                               "dateTime": dateTime, "title": title, "link": link})
 
-    filename = "eventList.json"
+    filename = "event_list.json"
     with open(filename, "r") as file:
         data = json.load(file)
 
@@ -37,8 +37,8 @@ def MEIScraper():
     with open(filename, "w") as file:
         json.dump(data, file)
 
-    # with open("eventList.json", "a") as outfile:
+    # with open("event_list.json", "a") as outfile:
     #     outfile.write(json_string)
 
 
-MEIScraper()
+mei_scraper()
