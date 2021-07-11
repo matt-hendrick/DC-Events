@@ -1,15 +1,20 @@
 import eventList from './eventList.json';
 
+// Components
+import Card from './components/Card/Card';
+
 function App() {
   return (
     <div>
       {eventList.map((item: any) => {
+        const dateTime = new Date(item.dateTime);
         return (
-          <div>
-            <a href={item.link}>{item.title}</a>
-            <div>{item.date}</div>
-            <div>{item.time}</div>
-          </div>
+          <Card
+            title={item.title}
+            dateTime={dateTime.toLocaleString()}
+            entity={item.entity}
+            link={item.link}
+          />
         );
       })}
     </div>
