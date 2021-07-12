@@ -1,6 +1,9 @@
 import eventList from './event_list.json';
 
+import Container from '@material-ui/core/Container';
+
 // Components
+import Navbar from './components/Navbar/Navbar';
 import Card from './components/Card/Card';
 
 function App() {
@@ -10,21 +13,24 @@ function App() {
 
   return (
     <div>
-      {eventList.map((item: any) => {
-        const dateTime = new Date(item.dateTime);
-        return (
-          <Card
-            title={item.title}
-            dateTime={
-              dateTime.getHours() !== 0
-                ? dateTime.toLocaleString()
-                : dateTime.toLocaleDateString()
-            }
-            entity={item.entity}
-            link={item.link}
-          />
-        );
-      })}
+      <Navbar />
+      <Container style={{ paddingTop: '5vh' }}>
+        {eventList.map((item: any) => {
+          const dateTime = new Date(item.dateTime);
+          return (
+            <Card
+              title={item.title}
+              dateTime={
+                dateTime.getHours() !== 0
+                  ? dateTime.toLocaleString()
+                  : dateTime.toLocaleDateString()
+              }
+              entity={item.entity}
+              link={item.link}
+            />
+          );
+        })}
+      </Container>
     </div>
   );
 }

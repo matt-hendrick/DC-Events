@@ -12,7 +12,7 @@ interface Children {
 
 function MyCard(children: Children) {
   return (
-    <Card>
+    <Card style={{ marginBottom: '5px' }}>
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
           {children.entity}
