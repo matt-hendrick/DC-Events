@@ -14,7 +14,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Container style={{ paddingTop: '5vh' }}>
+      <Container style={{ paddingTop: '5vh', width: '85%' }}>
         {eventList.map((item: any) => {
           const dateTime = new Date(item.dateTime);
           return (
