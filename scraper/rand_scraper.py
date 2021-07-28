@@ -38,4 +38,5 @@ def rand_scraper():
         json.dump(data, file)
 
 
-rand_scraper()
+if __name__ == "__main__":
+    rand_scraper()

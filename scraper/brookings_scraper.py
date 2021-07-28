@@ -30,4 +30,5 @@ def brookings_scraper():
         outfile.write(json_string)
 
 
-brookings_scraper()
+if __name__ == "__main__":
+    brookings_scraper()

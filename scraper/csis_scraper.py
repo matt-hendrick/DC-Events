@@ -35,4 +35,5 @@ def csis_scraper():
         json.dump(data, file)
 
 
-csis_scraper()
+if __name__ == "__main__":
+    csis_scraper()

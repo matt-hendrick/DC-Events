@@ -35,4 +35,5 @@ def atlantic_council_scraper():
         json.dump(data, file)
 
 
-atlantic_council_scraper()
+if __name__ == "__main__":
+    atlantic_council_scraper()

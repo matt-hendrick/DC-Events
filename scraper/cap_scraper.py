@@ -37,4 +37,5 @@ def cap_scraper():
         json.dump(data, file)
 
 
-cap_scraper()
+if __name__ == "__main__":
+    cap_scraper()

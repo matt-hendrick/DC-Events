@@ -39,4 +39,5 @@ def heritage_scraper():
         json.dump(data, file)
 
 
-heritage_scraper()
+if __name__ == "__main__":
+    heritage_scraper()

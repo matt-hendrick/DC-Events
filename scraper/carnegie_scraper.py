@@ -51,4 +51,5 @@ def carnegie_scraper():
         json.dump(data, file)
 
 
-carnegie_scraper()
+if __name__ == "__main__":
+    carnegie_scraper()

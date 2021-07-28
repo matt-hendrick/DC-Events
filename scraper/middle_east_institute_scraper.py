@@ -4,7 +4,7 @@ import json
 from dateutil import parser
 
 
-def mei_scraper():
+def middle_east_institute_scraper():
 
     eventList = []
 
@@ -38,4 +38,5 @@ def mei_scraper():
         json.dump(data, file)
 
 
-mei_scraper()
+if __name__ == "__main__":
+    middle_east_institute_scraper()
