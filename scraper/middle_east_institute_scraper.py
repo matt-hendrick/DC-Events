@@ -27,15 +27,7 @@ def middle_east_institute_scraper():
             eventList.append({"entity": entity, "type": entityType,
                               "dateTime": dateTime, "title": title, "link": link})
 
-    filename = "event_list.json"
-    with open(filename, "r") as file:
-        data = json.load(file)
-
-    for item in eventList:
-        data.append(item)
-
-    with open(filename, "w") as file:
-        json.dump(data, file)
+    return eventList
 
 
 if __name__ == "__main__":

@@ -8,11 +8,9 @@ from heritage_scraper import heritage_scraper
 from middle_east_institute_scraper import middle_east_institute_scraper
 from rand_scraper import rand_scraper
 
-brookings_scraper()
-atlantic_council_scraper()
-cap_scraper()
+eventList = brookings_scraper() + atlantic_council_scraper() + cap_scraper() + \
+    csis_scraper() + heritage_scraper() + \
+    middle_east_institute_scraper() + rand_scraper()
 # carnegie_scraper()
-csis_scraper()
-heritage_scraper()
-middle_east_institute_scraper()
-rand_scraper()
+
+print(eventList)

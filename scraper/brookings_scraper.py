@@ -24,10 +24,7 @@ def brookings_scraper():
         eventList.append({"entity": entity, "type": entityType,
                          "dateTime": dateTime, "title": title, "link": link})
 
-    json_string = json.dumps(eventList, default=str)
-
-    with open("event_list.json", "w") as outfile:
-        outfile.write(json_string)
+    return eventList
 
 
 if __name__ == "__main__":
