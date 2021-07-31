@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 from dateutil import parser
+import uuid
 
 
 def atlantic_council_scraper():
@@ -21,8 +22,9 @@ def atlantic_council_scraper():
         entity = "The Atlantic Council"
         entityType = "Think Tank"
         link = event.find("a").get("href")
+        eventID = str(uuid.uuid4())
         eventList.append({"entity": entity, "type": entityType,
-                         "dateTime": dateTime, "title": title, "link": link})
+                         "dateTime": dateTime, "title": title, "link": link, "eventID": eventID})
 
     return eventList
 

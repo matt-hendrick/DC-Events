@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 from dateutil import parser
+import uuid
 
 
 def middle_east_institute_scraper():
@@ -24,8 +25,9 @@ def middle_east_institute_scraper():
             entity = "Middle East Institute"
             entityType = "Think Tank"
             link = event.find("a").get("href")
+            eventID = str(uuid.uuid4())
             eventList.append({"entity": entity, "type": entityType,
-                              "dateTime": dateTime, "title": title, "link": link})
+                              "dateTime": dateTime, "title": title, "link": link, "eventID": eventID})
 
     return eventList
 

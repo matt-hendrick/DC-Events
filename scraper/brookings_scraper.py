@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 from dateutil import parser
+import uuid
 
 
 def brookings_scraper():
@@ -21,8 +22,9 @@ def brookings_scraper():
         entity = "The Brookings Institution"
         entityType = "Think Tank"
         link = event.get("href")
+        eventID = str(uuid.uuid4())
         eventList.append({"entity": entity, "type": entityType,
-                         "dateTime": dateTime, "title": title, "link": link})
+                         "dateTime": dateTime, "title": title, "link": link, "eventID": eventID})
 
     return eventList
 

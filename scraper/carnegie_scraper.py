@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 from dateutil import parser
+import uuid
 
 
 def carnegie_scraper():
@@ -25,8 +26,9 @@ def carnegie_scraper():
         entity = "Carnegie Endowment for International Peace"
         entityType = "Think Tank"
         link = "https://carnegieendowment.org" + event.find("a").get("href")
+        eventID = uuid.uuid4()
         eventList.append({"entity": entity, "type": entityType,
-                          "dateTime": dateTime, "title": title, "link": link})
+                          "dateTime": dateTime, "title": title, "link": link, "eventID": eventID})
 
     for event in soup.find_all("div", class_="cols"):
         title = event.find("h3").get_text()
@@ -37,9 +39,10 @@ def carnegie_scraper():
         entity = "Carnegie Endowment for International Peace"
         entityType = "Think Tank"
         link = "https://carnegieendowment.org" + event.find("a").get("href")
+        eventID = str(uuid.uuid4())
         eventList.append({"entity": entity, "type": entityType,
-                          "dateTime": dateTime, "title": title, "link": link})
-    print(eventList)
+                          "dateTime": dateTime, "title": title, "link": link, "eventID": eventID})
+
     return eventList
 
 

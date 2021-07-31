@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 from dateutil import parser
+import uuid
 
 
 def csis_scraper():
@@ -21,8 +22,9 @@ def csis_scraper():
         entity = "CSIS"
         entityType = "Think Tank"
         link = "https://www.csis.org" + event.find("a").get("href")
+        eventID = str(uuid.uuid4())
         eventList.append({"entity": entity, "type": entityType,
-                         "dateTime": dateTime, "title": title, "link": link})
+                          "dateTime": dateTime, "title": title, "link": link, "eventID": eventID})
 
     return eventList
 
