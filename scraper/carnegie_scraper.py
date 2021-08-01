@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import json
 from dateutil import parser
 import uuid
+import datetime
 
 
 def carnegie_scraper():
@@ -23,12 +24,14 @@ def carnegie_scraper():
         dateTime = str(parser.parse(event.find(
             "div", class_="date").get_text() + " " + event.find(
             "div", class_="time").get_text()[:7]))
+        date = datetime.datetime.strptime(dateTime, "%Y-%m-%d %H:%M:%S")
+        unixTimeStamp = int(datetime.datetime.timestamp(date))
         entity = "Carnegie Endowment for International Peace"
         entityType = "Think Tank"
         link = "https://carnegieendowment.org" + event.find("a").get("href")
         eventID = uuid.uuid4()
         eventList.append({"entity": entity, "type": entityType,
-                          "dateTime": dateTime, "title": title, "link": link, "eventID": eventID})
+                          "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
     for event in soup.find_all("div", class_="cols"):
         title = event.find("h3").get_text()
@@ -36,12 +39,14 @@ def carnegie_scraper():
             "span", class_="month is-ts").get_text() + " " + event.find(
             "span", class_="day").get_text() + " " + event.find(
             "span", class_="year").get_text()))
+        date = datetime.datetime.strptime(dateTime, "%Y-%m-%d %H:%M:%S")
+        unixTimeStamp = int(datetime.datetime.timestamp(date))
         entity = "Carnegie Endowment for International Peace"
         entityType = "Think Tank"
         link = "https://carnegieendowment.org" + event.find("a").get("href")
         eventID = str(uuid.uuid4())
         eventList.append({"entity": entity, "type": entityType,
-                          "dateTime": dateTime, "title": title, "link": link, "eventID": eventID})
+                          "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
     return eventList
 

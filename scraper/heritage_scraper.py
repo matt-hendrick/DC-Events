@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 from dateutil import parser
-from datetime import datetime
+import datetime
 import uuid
 
 
@@ -20,15 +20,17 @@ def heritage_scraper():
         title = event.find(
             "div", class_="result-card__info-wrapper").get_text().strip()
         dateTime = str(parser.parse((event.find(
-            "p", class_="result-card__event-date").get_text()) + " " + str(datetime.now().year) + " " + event.find(
+            "p", class_="result-card__event-date").get_text()) + " " + str(datetime.datetime.now().year) + " " + event.find(
             "p", class_="result-card__time").get_text()[:7]))
+        date = datetime.datetime.strptime(dateTime, "%Y-%m-%d %H:%M:%S")
+        unixTimeStamp = int(datetime.datetime.timestamp(date))
         entity = "The Heritage Foundation"
         entityType = "Think Tank"
         link = "https://www.heritage.org" + event.find(
             "div", class_="result-card__info-wrapper").find("a").get("href")
         eventID = str(uuid.uuid4())
         eventList.append({"entity": entity, "type": entityType,
-                          "dateTime": dateTime, "title": title, "link": link, "eventID": eventID})
+                          "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
     return eventList
 

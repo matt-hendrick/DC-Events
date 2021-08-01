@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import json
 from dateutil import parser
 import uuid
+import datetime
 
 
 def rand_scraper():
@@ -22,12 +23,15 @@ def rand_scraper():
             if (dateTime > dateTime.now()):
                 title = event.find("h3").get_text()
                 dateTime = str(dateTime)
+                date = datetime.datetime.strptime(
+                    dateTime, "%Y-%m-%d %H:%M:%S")
+                unixTimeStamp = int(datetime.datetime.timestamp(date))
                 entity = "RAND Corporation"
                 entityType = "Think Tank"
                 link = event.find("a").get("href")
                 eventID = str(uuid.uuid4())
                 eventList.append({"entity": entity, "type": entityType,
-                                  "dateTime": dateTime, "title": title, "link": link, "eventID": eventID})
+                                  "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
     return eventList
 
