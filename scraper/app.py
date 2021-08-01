@@ -21,18 +21,7 @@ def app(dynamodb=None):
 
     table = dynamodb.Table('DC_Events')
     for event in eventList:
-        # entity = event.entity
-        # entityType = event.entityType
-        # dateTime = event.dateTime
-        # title = event.ti
-        # {"entity": entity, "type": entityType,
-        #                  "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp
-        # year = int(movie['year'])
-        # title = movie['title']
-        print("Adding event:", event)
         table.put_item(Item=event)
-
-    # print(eventList)
 
 
 if __name__ == '__main__':
