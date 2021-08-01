@@ -8,11 +8,12 @@ interface Children {
   title: string;
   dateTime: string;
   link: string;
+  key: string;
 }
 
 function MyCard(children: Children) {
   return (
-    <Card style={{ marginBottom: '5px' }}>
+    <Card style={{ marginBottom: '5px' }} key={children.key}>
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
           {children.entity}

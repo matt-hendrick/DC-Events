@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 
 import axios from 'axios';
 
+// MUI
 import Container from '@material-ui/core/Container';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 // Components
 import Navbar from './components/Navbar/Navbar';
@@ -38,23 +40,26 @@ function App() {
     <div>
       <Navbar />
       <Container style={{ paddingTop: '5vh', width: '85%' }}>
-        {eventList
-          ? eventList.map((item: any) => {
-              const dateTime = new Date(item.dateTime);
-              return (
-                <Card
-                  title={item.title}
-                  dateTime={
-                    dateTime.getHours() !== 0
-                      ? dateTime.toLocaleString()
-                      : dateTime.toLocaleDateString()
-                  }
-                  entity={item.entity}
-                  link={item.link}
-                />
-              );
-            })
-          : null}
+        {eventList?.length > 1 ? (
+          eventList.map((item: any) => {
+            const dateTime = new Date(item.dateTime);
+            return (
+              <Card
+                title={item.title}
+                dateTime={
+                  dateTime.getHours() !== 0
+                    ? dateTime.toLocaleString()
+                    : dateTime.toLocaleDateString()
+                }
+                entity={item.entity}
+                link={item.link}
+                key={item.uuid}
+              />
+            );
+          })
+        ) : (
+          <LinearProgress />
+        )}
       </Container>
     </div>
   );
