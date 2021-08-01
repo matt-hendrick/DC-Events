@@ -7,7 +7,9 @@ function Navbar() {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6">Events in DC</Typography>
+        <Typography variant="h6" style={{ margin: 'auto' }}>
+          DC Events
+        </Typography>
       </Toolbar>
     </AppBar>
   );
