@@ -28,5 +28,6 @@ yarn-error.log*
 /scraper/DC_Events_Scraper/.aws-sam
 /scraper/DC_Events_Scraper/events
 /scraper/DC_Events_Scraper/samconfig.toml
+/scraper/DC_Events_Scraper/scraper/__pycache__
 /scraper/__pycache__
 /scraper/.vscode
