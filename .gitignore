@@ -22,6 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+/frontend/.vscode
+
 /scraper/DCEvents
 /scraper/DC_Events_Scraper/.aws-sam
 /scraper/DC_Events_Scraper/events
