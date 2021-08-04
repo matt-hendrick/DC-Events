@@ -6,6 +6,7 @@ from csis_scraper import csis_scraper
 from heritage_scraper import heritage_scraper
 from middle_east_institute_scraper import middle_east_institute_scraper
 from rand_scraper import rand_scraper
+from delete_table import delete_table
 import boto3
 
 
@@ -38,6 +39,8 @@ def lambda_handler(event, context, dynamodb=None):
     if not dynamodb:
         dynamodb = boto3.resource(
             'dynamodb', region_name='us-east-2')
+
+    delete_table("DC_Events")
 
     table = dynamodb.Table('DC_Events')
     for event in eventList:
