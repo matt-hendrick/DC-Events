@@ -25,11 +25,12 @@ def wilson_center_scraper():
         unixTimeStamp = int(datetime.datetime.timestamp(date))
         entity = "The Wilson Center"
         entityType = "Think Tank"
-        link = event.find("a").get("href")
+        link = "https://www.wilsoncenter.org/event" + \
+            event.find("a").get("href")
         eventID = str(uuid.uuid4())
         eventList.append({"entity": entity, "type": entityType,
                          "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
-
+    print(eventList)
     return eventList
 
 
