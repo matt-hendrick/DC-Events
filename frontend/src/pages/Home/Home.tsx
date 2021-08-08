@@ -22,6 +22,7 @@ interface Event {
 
 function Home() {
   const [eventList, setEventList] = useState<Event[]>([]);
+  const currentDateTime = Date.now();
 
   const getData = () => {
     axios
@@ -31,10 +32,15 @@ function Home() {
       .then((response) => {
         let tempEventList = response.data.body.Items;
         setEventList(
-          tempEventList.sort(
-            (a: Event, b: Event) =>
-              new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()
-          )
+          tempEventList
+            .sort(
+              (a: Event, b: Event) =>
+                new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()
+            )
+            .filter(
+              (item: Event) =>
+                new Date(item.dateTime).getTime() >= currentDateTime
+            )
         );
       })
       .catch((error) => {
