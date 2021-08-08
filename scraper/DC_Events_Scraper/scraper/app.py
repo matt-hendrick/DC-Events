@@ -10,6 +10,8 @@ from wilson_center_scraper import wilson_center_scraper
 from delete_table import delete_table
 import boto3
 
+# this lambda function is a cron job that runs weekly every Sunday
+
 
 def lambda_handler(event, context, dynamodb=None):
     """Sample pure Lambda function
@@ -42,9 +44,12 @@ def lambda_handler(event, context, dynamodb=None):
             'dynamodb', region_name='us-east-2')
 
     # delete all items in table
-    # this lambda function is a cron job that runs weekly
     delete_table("DC_Events")
 
     table = dynamodb.Table('DC_Events')
+    eventCount = 0
     for event in eventList:
         table.put_item(Item=event)
+        eventCount += 1
+        if (eventCount >= 100):
+            break
