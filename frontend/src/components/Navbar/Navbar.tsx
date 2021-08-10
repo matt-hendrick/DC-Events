@@ -1,3 +1,5 @@
+import './Navbar.css';
+
 // MUI
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,8 +9,8 @@ function Navbar() {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" style={{ margin: 'auto' }}>
-          DC Events
+        <Typography variant="h6" className="navbar">
+          Events in Washington D.C.
         </Typography>
       </Toolbar>
     </AppBar>

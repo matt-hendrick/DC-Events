@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './Home.css';
 
 // Axios
 import axios from 'axios';
@@ -53,7 +54,7 @@ function Home() {
   }, []);
 
   return (
-    <Container style={{ paddingTop: '5vh', width: '85%' }}>
+    <Container className="home">
       {eventList?.length > 1 ? (
         eventList.map((item: Event) => {
           const dateTime = new Date(item.dateTime);

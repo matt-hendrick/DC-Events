@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import './App.css';
 
 // Components
 import Navbar from './components/Navbar/Navbar';
@@ -10,7 +11,9 @@ function App() {
   return (
     <Fragment>
       <Navbar />
-      <Home />
+      <div className="app-home">
+        <Home />
+      </div>
     </Fragment>
   );
 }
