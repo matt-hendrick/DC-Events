@@ -1,20 +1,15 @@
-import requests
-from bs4 import BeautifulSoup
-import json
 from dateutil import parser
 import datetime
 import uuid
+
+from get_soup import get_soup
 
 
 def heritage_scraper():
 
     eventList = []
 
-    url = "https://www.heritage.org/events"
-
-    page = requests.get(url)
-
-    soup = BeautifulSoup(page.content, 'html.parser')
+    soup = get_soup("https://www.heritage.org/events")
 
     for event in soup.find_all("section", class_="result-card result-card__event result-card__event--upcoming result-card__event--has-video"):
         title = event.find(

@@ -1,20 +1,15 @@
-import requests
-from bs4 import BeautifulSoup
-import json
 from dateutil import parser
 import uuid
 import datetime
+
+from get_soup import get_soup
 
 
 def atlantic_council_scraper():
 
     eventList = []
 
-    url = "https://www.atlanticcouncil.org/events/"
-
-    page = requests.get(url)
-
-    soup = BeautifulSoup(page.content, 'html.parser')
+    soup = get_soup("https://www.atlanticcouncil.org/events/")
 
     for event in soup.find_all("div", class_="gta-embed--content gta-event-embed--content"):
         title = event.find("h3").get_text().strip()

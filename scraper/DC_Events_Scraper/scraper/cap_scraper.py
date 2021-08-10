@@ -1,20 +1,15 @@
-import requests
-from bs4 import BeautifulSoup
-import json
 from dateutil import parser
 import uuid
 import datetime
+
+from get_soup import get_soup
 
 
 def cap_scraper():
 
     eventList = []
 
-    url = "https://www.americanprogress.org/events/upcoming-events/"
-
-    page = requests.get(url)
-
-    soup = BeautifulSoup(page.content, 'html.parser')
+    soup = get_soup("https://www.americanprogress.org/events/upcoming-events/")
 
     for event in soup.find_all("article"):
         dateTime = parser.parse(event.find(

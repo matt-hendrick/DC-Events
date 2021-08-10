@@ -1,26 +1,20 @@
-import requests
-from bs4 import BeautifulSoup
-import json
 from dateutil import parser
 import uuid
 import datetime
 
+from get_soup import get_soup
+
 
 def brookings_scraper():
-
     eventList = []
 
-    url = "https://www.brookings.edu/events/upcoming/"
-
-    page = requests.get(url)
-
-    soup = BeautifulSoup(page.content, 'html.parser')
+    soup = get_soup("https://www.brookings.edu/events/upcoming/")
 
     for event in soup.find_all("a", class_="event-content"):
         title = event.find("h4").get_text()
-        dateTime = parser.parse(event.find(
-            "div", class_="event-date list").get("content"))
-        date = datetime.datetime.strptime(dateTime[0:19], "%Y-%m-%d %H:%M:%S")
+        dateTime = str(parser.parse(event.find(
+            "div", class_="event-date list").get("content")[0:19]))
+        date = datetime.datetime.strptime(dateTime, "%Y-%m-%d %H:%M:%S")
         unixTimeStamp = int(datetime.datetime.timestamp(date))
         entity = "The Brookings Institution"
         entityType = "Think Tank"

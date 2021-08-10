@@ -1,20 +1,15 @@
-import requests
-from bs4 import BeautifulSoup
-import json
 from dateutil import parser
 import uuid
 import datetime
+
+from get_soup import get_soup
 
 
 def csis_scraper():
 
     eventList = []
 
-    url = "https://www.csis.org/events-upcoming?title="
-
-    page = requests.get(url)
-
-    soup = BeautifulSoup(page.content, 'html.parser')
+    soup = get_soup("https://www.csis.org/events-upcoming?title=")
 
     for event in soup.find_all("div", class_="ds-right"):
         title = event.find("div", class_="teaser__title").get_text()

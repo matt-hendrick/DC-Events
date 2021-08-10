@@ -1,20 +1,15 @@
-import requests
-from bs4 import BeautifulSoup
-import json
 from dateutil import parser
 import uuid
 import datetime
+
+from get_soup import get_soup
 
 
 def rand_scraper():
 
     eventList = []
 
-    url = "https://www.rand.org/events.html"
-
-    page = requests.get(url)
-
-    soup = BeautifulSoup(page.content, 'html.parser')
+    soup = get_soup("https://www.rand.org/events.html")
 
     for event in soup.find_all("div", class_="text"):
         if (event.find("p", class_="date")):

@@ -1,20 +1,15 @@
-import requests
-from bs4 import BeautifulSoup
-import json
 from dateutil import parser
 import uuid
 import datetime
+
+from get_soup import get_soup
 
 
 def wilson_center_scraper():
 
     eventList = []
 
-    url = "https://www.wilsoncenter.org/events"
-
-    page = requests.get(url)
-
-    soup = BeautifulSoup(page.content, 'html.parser')
+    soup = get_soup("https://www.wilsoncenter.org/events")
 
     for event in soup.find_all("div", class_="faceted-search-event"):
         title = event.find("h4").get_text().strip()
