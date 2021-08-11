@@ -14,6 +14,7 @@ def middle_east_institute_scraper():
     for event in soup.find_all("div", class_="related-event-feature"):
         dateTime = parser.parse(event.find(
             "div", class_="feature__date").get_text())
+        # Only writes event to DB if it is a future event
         if (dateTime > dateTime.now()):
             title = event.find("h4").get_text()
             dateTime = str(dateTime)

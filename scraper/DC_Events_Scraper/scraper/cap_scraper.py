@@ -14,6 +14,7 @@ def cap_scraper():
     for event in soup.find_all("article"):
         dateTime = parser.parse(event.find(
             "div", class_="entry-meta event-entry-meta-list").get_text()[:-13])
+        # Only writes event to DB if it is a future event
         if (dateTime > dateTime.now()):
             title = event.find("h3").get_text()
             dateTime = str(dateTime)

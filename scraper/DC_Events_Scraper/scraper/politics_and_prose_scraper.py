@@ -15,9 +15,11 @@ def politics_and_prose_scraper():
     for event in soup.find_all("div", class_="views-row"):
         title = event.find("h2").get_text()
         if len(event.find(
-                "div", class_="views-field views-field-field-date").get_text().split()) <= 5:
+                "div", class_="views-field views-field-field-date").get_text().split()) < 5:
             dateTime = str(parser.parse(event.find(
                 "div", class_="views-field views-field-field-date").get_text()))
+        # if len is > 5, date is a range which the parser cannot handle
+        # splits date text and only returns first 4
         else:
             dateTime = str(parser.parse((" ".join(event.find(
                 "div", class_="views-field views-field-field-date").get_text().split()[0:4]))))
@@ -25,8 +27,10 @@ def politics_and_prose_scraper():
         unixTimeStamp = int(datetime.datetime.timestamp(date))
         entity = "Politics and Prose"
         entityType = "Bookstore"
+        # P&P event links are eventbrite links
         if len([a['href'] for a in event.select("a[href*=eventbrite]")]) > 0:
             link = [a['href'] for a in event.select("a[href*=eventbrite]")][0]
+        # if there is no eventbrite link, add other link (if available)
         elif event.find("a").get("href") != None:
             link = event.find("a").get("href")
         else:

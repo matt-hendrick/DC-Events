@@ -15,6 +15,7 @@ def rand_scraper():
         if (event.find("p", class_="date")):
             dateTime = parser.parse(event.find(
                 "p", class_="date").get_text())
+            # Only writes event to DB if it is a future event
             if (dateTime > dateTime.now()):
                 title = event.find("h3").get_text()
                 dateTime = str(dateTime)
