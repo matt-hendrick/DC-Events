@@ -80,7 +80,9 @@ function Home() {
   };
   return (
     <Container className="home">
-      <MyButton onClick={toggleFilter}>Turn On Filter</MyButton>
+      <MyButton onClick={toggleFilter}>
+        Turn {!filter ? 'On' : 'Off'} Filter
+      </MyButton>
       {eventList?.length > 1 ? (
         mapEventList(
           filter
