@@ -10,6 +10,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 // Components
 import Card from '../../components/Card/Card';
+import MyButton from '../../components/MyButton/MyButton';
 
 interface Event {
   entity: string;
@@ -19,10 +20,12 @@ interface Event {
   title: string;
   link: string;
   uuid: string;
+  type: string;
 }
 
 function Home() {
   const [eventList, setEventList] = useState<Event[]>([]);
+  const [filter, setFilter] = useState<boolean>(false);
   const currentDateTime = Date.now();
 
   const getData = () => {
@@ -53,25 +56,37 @@ function Home() {
     getData();
   }, []);
 
+  const toggleFilter = () => {
+    setFilter(!filter);
+  };
+
+  const mapEventList = (arr: Event[]) => {
+    return arr.map((item: Event) => {
+      const dateTime = new Date(item.dateTime);
+      return (
+        <Card
+          title={item.title}
+          dateTime={
+            dateTime.getHours() !== 0
+              ? dateTime.toLocaleString()
+              : dateTime.toLocaleDateString()
+          }
+          entity={item.entity}
+          link={item.link}
+          key={item.uuid}
+        />
+      );
+    });
+  };
   return (
     <Container className="home">
+      <MyButton onClick={toggleFilter}>Turn On Filter</MyButton>
       {eventList?.length > 1 ? (
-        eventList.map((item: Event) => {
-          const dateTime = new Date(item.dateTime);
-          return (
-            <Card
-              title={item.title}
-              dateTime={
-                dateTime.getHours() !== 0
-                  ? dateTime.toLocaleString()
-                  : dateTime.toLocaleDateString()
-              }
-              entity={item.entity}
-              link={item.link}
-              key={item.uuid}
-            />
-          );
-        })
+        mapEventList(
+          filter
+            ? eventList.filter((item) => item.type === 'Think Tank')
+            : eventList
+        )
       ) : (
         <LinearProgress />
       )}
