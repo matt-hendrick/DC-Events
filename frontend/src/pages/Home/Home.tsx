@@ -25,7 +25,7 @@ interface Event {
 
 function Home() {
   const [eventList, setEventList] = useState<Event[]>([]);
-  const [filter, setFilter] = useState<boolean>(false);
+  const [filters, setFilters] = useState<Map<string, boolean>>(new Map());
   const currentDateTime = Date.now();
 
   const getData = () => {
@@ -56,10 +56,22 @@ function Home() {
     getData();
   }, []);
 
-  const toggleFilter = () => {
-    setFilter(!filter);
+  // Toggles filters on and off for different types of entitys that have events
+  const toggleFilters = (entityType: string) => {
+    if (!filters.has(entityType))
+      setFilters(new Map(filters.set(entityType, true)));
+    else setFilters(new Map(filters.set(entityType, !filters.get(entityType))));
   };
 
+  // checks if the entity type is in the filters map
+  const isInFilters = (entityType: string) => {
+    if (filters.has(entityType)) {
+      if (filters.get(entityType) === true) return true;
+    }
+    return false;
+  };
+
+  // maps list of events to Cards
   const mapEventList = (arr: Event[]) => {
     return arr.map((item: Event) => {
       const dateTime = new Date(item.dateTime);
@@ -78,15 +90,19 @@ function Home() {
       );
     });
   };
+
   return (
     <Container className="home">
-      <MyButton onClick={toggleFilter}>
-        Turn {!filter ? 'On' : 'Off'} Filter
+      <MyButton onClick={() => toggleFilters('Think Tank')}>
+        Filter Think Tanks
+      </MyButton>
+      <MyButton onClick={() => toggleFilters('Bookstore')}>
+        Filter Bookstores
       </MyButton>
       {eventList?.length > 1 ? (
         mapEventList(
-          filter
-            ? eventList.filter((item) => item.type === 'Think Tank')
+          filters.size > 0
+            ? eventList.filter((item) => !isInFilters(item.type))
             : eventList
         )
       ) : (
