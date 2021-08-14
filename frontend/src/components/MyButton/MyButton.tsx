@@ -9,7 +9,11 @@ interface Props {
 }
 
 function MyButton(props: Props) {
-  return <Button onClick={props.onClick}>{props.children}</Button>;
+  return (
+    <Button onClick={props.onClick} color="primary" variant="contained">
+      {props.children}
+    </Button>
+  );
 }
 
 export default MyButton;
