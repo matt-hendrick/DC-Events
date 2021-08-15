@@ -26,8 +26,9 @@ def rand_scraper():
                 entityType = "Think Tank"
                 link = event.find("a").get("href")
                 eventID = str(uuid.uuid4())
+                additionalInfo = None
                 eventList.append({"entity": entity, "type": entityType,
-                                  "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
+                                  "dateTime": dateTime, "title": title, "link": link, "additionalInfo": additionalInfo, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
     return eventList
 

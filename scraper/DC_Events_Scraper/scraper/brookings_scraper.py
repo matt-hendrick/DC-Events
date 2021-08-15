@@ -19,10 +19,11 @@ def brookings_scraper():
         entity = "The Brookings Institution"
         entityType = "Think Tank"
         link = event.get("href")
+        additionalInfo = event.find("div", class_="host").get_text().strip()
         eventID = str(uuid.uuid4())
         eventList.append({"entity": entity, "type": entityType,
-                         "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
-
+                         "dateTime": dateTime, "title": title, "link": link, "additionalInfo": additionalInfo, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
+    print(eventList)
     return eventList
 
 

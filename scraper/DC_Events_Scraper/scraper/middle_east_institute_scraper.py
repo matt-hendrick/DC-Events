@@ -23,9 +23,10 @@ def middle_east_institute_scraper():
             entity = "Middle East Institute"
             entityType = "Think Tank"
             link = event.find("a").get("href")
+            additionalInfo = None
             eventID = str(uuid.uuid4())
             eventList.append({"entity": entity, "type": entityType,
-                              "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
+                              "dateTime": dateTime, "title": title, "link": link, "additionalInfo": additionalInfo, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
     return eventList
 

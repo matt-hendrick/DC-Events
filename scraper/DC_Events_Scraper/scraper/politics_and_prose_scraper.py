@@ -35,9 +35,10 @@ def politics_and_prose_scraper():
             link = event.find("a").get("href")
         else:
             link: "https://www.politics-prose.com/events"
+        additionalInfo = None
         eventID = str(uuid.uuid4())
         eventList.append({"entity": entity, "type": entityType,
-                         "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
+                         "dateTime": dateTime, "title": title, "link": link, "additionalInfo": additionalInfo, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
     return eventList
 

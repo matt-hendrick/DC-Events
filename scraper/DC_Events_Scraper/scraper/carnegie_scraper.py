@@ -24,9 +24,10 @@ def carnegie_scraper():
         entity = "Carnegie Endowment for International Peace"
         entityType = "Think Tank"
         link = "https://carnegieendowment.org" + event.find("a").get("href")
+        additionalInfo = None
         eventID = uuid.uuid4()
         eventList.append({"entity": entity, "type": entityType,
-                          "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
+                          "dateTime": dateTime, "title": title, "link": link, "additionalInfo": additionalInfo, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
     for event in soup.find_all("div", class_="cols"):
         title = event.find("h3").get_text()
@@ -39,9 +40,10 @@ def carnegie_scraper():
         entity = "Carnegie Endowment for International Peace"
         entityType = "Think Tank"
         link = "https://carnegieendowment.org" + event.find("a").get("href")
+        additionalInfo = None
         eventID = str(uuid.uuid4())
         eventList.append({"entity": entity, "type": entityType,
-                          "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
+                          "dateTime": dateTime, "title": title, "link": link, "additionalInfo": additionalInfo, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
     return eventList
 

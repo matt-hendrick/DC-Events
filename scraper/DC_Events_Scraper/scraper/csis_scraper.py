@@ -20,9 +20,10 @@ def csis_scraper():
         entity = "CSIS"
         entityType = "Think Tank"
         link = "https://www.csis.org" + event.find("a").get("href")
+        additionalInfo = None
         eventID = str(uuid.uuid4())
         eventList.append({"entity": entity, "type": entityType,
-                          "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
+                          "dateTime": dateTime, "title": title, "link": link, "additionalInfo": additionalInfo, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
     return eventList
 

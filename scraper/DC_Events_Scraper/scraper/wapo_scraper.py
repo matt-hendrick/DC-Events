@@ -31,9 +31,10 @@ def wapo_scraper():
                 entityType = "Newspaper"
                 link = event.find(
                     "h2").find("a").get("href")
+                additionalInfo = None
                 eventID = str(uuid.uuid4())
                 eventList.append({"entity": entity, "type": entityType,
-                                  "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
+                                  "dateTime": dateTime, "title": title, "link": link, "additionalInfo": additionalInfo, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
     for event in soup2.find_all("div", class_="border-top-off border-top-100-pct border-bottom-hairline border-bottom-100-pct"):
         dateTime = event.find(
@@ -50,9 +51,10 @@ def wapo_scraper():
                 entityType = "Newspaper"
                 link = event.find(
                     "h2").find("a").get("href")
+                additionalInfo = None
                 eventID = str(uuid.uuid4())
                 eventList.append({"entity": entity, "type": entityType,
-                                  "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
+                                  "dateTime": dateTime, "title": title, "link": link, "additionalInfo": additionalInfo, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
     return eventList
 
