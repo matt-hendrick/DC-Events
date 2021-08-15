@@ -22,10 +22,12 @@ def wilson_center_scraper():
         entityType = "Think Tank"
         link = "https://www.wilsoncenter.org" + \
             event.find("a").get("href")
+        additionalInfo = None
         eventID = str(uuid.uuid4())
         eventList.append({"entity": entity, "type": entityType,
-                         "dateTime": dateTime, "title": title, "link": link, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
+                         "dateTime": dateTime, "title": title, "link": link, "additionalInfo": additionalInfo, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
+    print(eventList)
     return eventList
 
 
