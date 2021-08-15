@@ -69,6 +69,11 @@ function Home() {
     else setFilters(new Map(filters.set(entityType, !filters.get(entityType))));
   };
 
+  // clears out all filters
+  const clearFilters = () => {
+    if (filters.size > 0) setFilters(new Map());
+  };
+
   // checks if the entity type is in the filters map
   const isInFilters = (entityType: string) => {
     if (filters.has(entityType)) {
@@ -111,6 +116,7 @@ function Home() {
           <MyButton onClick={() => toggleFilters('Newspaper')}>
             Filter Newspapers
           </MyButton>
+          <MyButton onClick={clearFilters}>Reset Filters</MyButton>
         </div>
         {eventList?.length > 1 ? (
           mapEventList(
