@@ -100,7 +100,7 @@ function Home() {
 
   return (
     <div className={classes.homeWrapperDiv}>
-      <Container className={classes.homeMianContainer}>
+      <Container className={classes.homeMainContainer}>
         <div className={classes.homeButtonContainer}>
           <MyButton onClick={() => toggleFilters('Think Tank')}>
             Filter Think Tanks
