@@ -25,7 +25,6 @@ def atlantic_council_scraper():
         eventList.append({"entity": entity, "type": entityType,
                          "dateTime": dateTime, "title": title, "link": link, "additionalInfo": additionalInfo, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
 
-    print(eventList)
     return eventList
 
 

@@ -23,7 +23,7 @@ def brookings_scraper():
         eventID = str(uuid.uuid4())
         eventList.append({"entity": entity, "type": entityType,
                          "dateTime": dateTime, "title": title, "link": link, "additionalInfo": additionalInfo, "eventID": eventID, "unixTimeStamp": unixTimeStamp})
-    print(eventList)
+
     return eventList
 
 
