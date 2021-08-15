@@ -108,6 +108,9 @@ function Home() {
           <MyButton onClick={() => toggleFilters('Bookstore')}>
             Filter Bookstores
           </MyButton>
+          <MyButton onClick={() => toggleFilters('Newspaper')}>
+            Filter Newspapers
+          </MyButton>
         </div>
         {eventList?.length > 1 ? (
           mapEventList(
