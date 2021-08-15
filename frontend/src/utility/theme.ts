@@ -23,7 +23,7 @@ const theme = {
       display: 'flex',
       justifyContent: 'space-between',
     },
-    button: {
+    myButton: {
       '&:hover': {
         backgroundColor: colors.primary.light,
       },

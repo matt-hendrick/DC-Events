@@ -19,7 +19,7 @@ function MyButton(props: Props) {
   return (
     <Button
       onClick={props.onClick}
-      className={classes.button}
+      className={classes.myButton}
       color="primary"
       variant="contained"
     >
