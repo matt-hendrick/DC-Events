@@ -18,6 +18,9 @@ from wilson_center_scraper import wilson_center_scraper
 # Bookstores
 from politics_and_prose_scraper import politics_and_prose_scraper
 
+# Newspapers
+from wapo_scraper import wapo_scraper
+
 
 # this lambda function is a cron job that runs weekly every Sunday
 
@@ -47,7 +50,7 @@ def lambda_handler(event, context, dynamodb=None):
     eventList = brookings_scraper() + atlantic_council_scraper() + cap_scraper() + \
         csis_scraper() + heritage_scraper() + \
         middle_east_institute_scraper() + rand_scraper() + wilson_center_scraper() + \
-        politics_and_prose_scraper()
+        politics_and_prose_scraper() + wapo_scraper()
     # carnegie_scraper()
     if not dynamodb:
         dynamodb = boto3.resource(
@@ -61,5 +64,5 @@ def lambda_handler(event, context, dynamodb=None):
     for event in eventList:
         table.put_item(Item=event)
         eventCount += 1
-        if (eventCount >= 200):
+        if (eventCount >= 400):
             break
