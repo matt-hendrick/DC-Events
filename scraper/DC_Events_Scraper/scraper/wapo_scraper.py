@@ -10,7 +10,10 @@ def wapo_scraper():
 
     soup = get_soup("https://www.washingtonpost.com/washington-post-live/")
 
+    # gets lede/highlighted event
     soup1 = soup.find(attrs={"data-feature-name": "lede-article"})
+
+    # gets remainder of upcoming events
     soup2 = soup.find(attrs={"data-feature-name": "upcoming-shows"})
 
     for event in soup1.find_all("div", class_="border-top-off border-top-100-pct border-bottom-hairline border-bottom-100-pct"):
