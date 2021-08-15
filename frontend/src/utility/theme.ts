@@ -16,6 +16,13 @@ const colors = {
 const theme = {
   palette: colors,
   classes: {
+    card: {
+      border: `1px ${colors.secondary.main} solid`,
+    },
+    cardType: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
     button: {
       '&:hover': {
         backgroundColor: colors.primary.light,

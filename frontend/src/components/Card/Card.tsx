@@ -1,9 +1,9 @@
-import './Card.css';
-
+// MUI
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
+import { Theme, makeStyles } from '@material-ui/core';
 
 interface Props {
   entity: string;
@@ -14,21 +14,26 @@ interface Props {
   type: string;
 }
 
+const useStyles = makeStyles<Theme, object>((theme) => ({
+  ...(theme.classes as object),
+}));
+
 function MyCard({ entity, title, dateTime, link, key, type }: Props) {
+  const classes = useStyles({} as object);
   return (
-    <Card className="card" key={key}>
+    <Card className={classes.card} key={key}>
       <CardContent>
         <Typography variant="h5">
           <Link href={link}>{title}</Link>
         </Typography>
-        <Typography color="textSecondary" gutterBottom variant="body1">
+        <Typography color="secondary" gutterBottom variant="body1">
           {entity}
         </Typography>
-        <div className="card-type">
-          <Typography color="textSecondary" variant="subtitle2">
+        <div className={classes.cardType}>
+          <Typography color="secondary" variant="subtitle2">
             {dateTime}
           </Typography>
-          <Typography color="textSecondary" variant="overline">
+          <Typography color="secondary" variant="overline">
             {type}
           </Typography>
         </div>
