@@ -41,6 +41,7 @@ const theme = {
     },
     // MyButton
     myButton: {
+      margin: '.5vw',
       '&:hover': {
         backgroundColor: colors.primary.light,
       },
