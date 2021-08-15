@@ -93,12 +93,14 @@ function Home() {
 
   return (
     <Container className="home">
-      <MyButton onClick={() => toggleFilters('Think Tank')}>
-        Filter Think Tanks
-      </MyButton>
-      <MyButton onClick={() => toggleFilters('Bookstore')}>
-        Filter Bookstores
-      </MyButton>
+      <div className="button-container">
+        <MyButton onClick={() => toggleFilters('Think Tank')}>
+          Filter Think Tanks
+        </MyButton>
+        <MyButton onClick={() => toggleFilters('Bookstore')}>
+          Filter Bookstores
+        </MyButton>
+      </div>
       {eventList?.length > 1 ? (
         mapEventList(
           filters.size > 0
