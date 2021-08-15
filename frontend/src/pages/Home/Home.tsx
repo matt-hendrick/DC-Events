@@ -99,25 +99,27 @@ function Home() {
   };
 
   return (
-    <Container className={classes.home}>
-      <div className={classes.homeButtonContainer}>
-        <MyButton onClick={() => toggleFilters('Think Tank')}>
-          Filter Think Tanks
-        </MyButton>
-        <MyButton onClick={() => toggleFilters('Bookstore')}>
-          Filter Bookstores
-        </MyButton>
-      </div>
-      {eventList?.length > 1 ? (
-        mapEventList(
-          filters.size > 0
-            ? eventList.filter((item) => !isInFilters(item.type))
-            : eventList
-        )
-      ) : (
-        <LinearProgress />
-      )}
-    </Container>
+    <div className={classes.homeWrapperDiv}>
+      <Container className={classes.homeMianContainer}>
+        <div className={classes.homeButtonContainer}>
+          <MyButton onClick={() => toggleFilters('Think Tank')}>
+            Filter Think Tanks
+          </MyButton>
+          <MyButton onClick={() => toggleFilters('Bookstore')}>
+            Filter Bookstores
+          </MyButton>
+        </div>
+        {eventList?.length > 1 ? (
+          mapEventList(
+            filters.size > 0
+              ? eventList.filter((item) => !isInFilters(item.type))
+              : eventList
+          )
+        ) : (
+          <LinearProgress />
+        )}
+      </Container>
+    </div>
   );
 }
 

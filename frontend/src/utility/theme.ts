@@ -11,12 +11,18 @@ const colors = {
     dark: '#660708',
     contrastText: '#fff',
   },
+  homeBackground: '#fafafa',
 };
 
 const theme = {
   palette: colors,
   classes: {
-    home: {
+    // Home
+    homeWrapperDiv: {
+      backgroundColor: colors.homeBackground,
+      minHeight: '100vh',
+    },
+    homeMainContainer: {
       paddingTop: '5vh',
       paddingBottom: '5vh',
     },
@@ -25,6 +31,7 @@ const theme = {
       display: 'flex',
       justifyContent: 'center',
     },
+    // Card
     card: {
       border: `1px ${colors.secondary.main} solid`,
     },
@@ -32,6 +39,7 @@ const theme = {
       display: 'flex',
       justifyContent: 'space-between',
     },
+    // MyButton
     myButton: {
       '&:hover': {
         backgroundColor: colors.primary.light,
