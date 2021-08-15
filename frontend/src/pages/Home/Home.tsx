@@ -86,6 +86,7 @@ function Home() {
           entity={item.entity}
           link={item.link}
           key={item.uuid}
+          type={item.type}
         />
       );
     });

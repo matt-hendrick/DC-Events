@@ -11,21 +11,27 @@ interface Props {
   dateTime: string;
   link: string;
   key: string;
+  type: string;
 }
 
-function MyCard(props: Props) {
+function MyCard({ entity, title, dateTime, link, key, type }: Props) {
   return (
-    <Card className="card" key={props.key}>
+    <Card className="card" key={key}>
       <CardContent>
         <Typography variant="h5">
-          <Link href={props.link}>{props.title}</Link>
+          <Link href={link}>{title}</Link>
         </Typography>
         <Typography color="textSecondary" gutterBottom variant="body1">
-          {props.entity}
+          {entity}
         </Typography>
-        <Typography color="textSecondary" variant="subtitle2">
-          {props.dateTime}
-        </Typography>
+        <div className="card-type">
+          <Typography color="textSecondary" variant="subtitle2">
+            {dateTime}
+          </Typography>
+          <Typography color="textSecondary" variant="overline">
+            {type}
+          </Typography>
+        </div>
       </CardContent>
     </Card>
   );
