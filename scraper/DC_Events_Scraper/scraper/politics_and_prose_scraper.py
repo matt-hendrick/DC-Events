@@ -22,7 +22,7 @@ def politics_and_prose_scraper():
         # splits date text and only returns first 4
         else:
             dateTime = str(parser.parse((" ".join(event.find(
-                "div", class_="views-field views-field-field-date").get_text().split()[0:4]))))
+                "div", class_="views-field views-field-field-date").get_text().split()[0:5]))))
         date = datetime.datetime.strptime(dateTime, "%Y-%m-%d %H:%M:%S")
         unixTimeStamp = int(datetime.datetime.timestamp(date))
         entity = "Politics and Prose"
