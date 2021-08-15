@@ -15,7 +15,7 @@ def middle_east_institute_scraper():
         dateTime = parser.parse(event.find(
             "div", class_="feature__date").get_text())
         # Only writes event to DB if it is a future event
-        if (dateTime > dateTime.now()):
+        if dateTime > dateTime.now():
             title = event.find("h4").get_text()
             dateTime = str(dateTime)
             date = datetime.datetime.strptime(dateTime, "%Y-%m-%d %H:%M:%S")
