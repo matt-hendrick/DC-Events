@@ -17,6 +17,7 @@ from wilson_center_scraper import wilson_center_scraper
 
 # Bookstores
 from politics_and_prose_scraper import politics_and_prose_scraper
+from busboys_and_poets_scraper import busboys_and_poets_scraper
 
 # Newspapers
 from wapo_scraper import wapo_scraper
@@ -50,7 +51,7 @@ def lambda_handler(event, context, dynamodb=None):
     eventList = brookings_scraper() + atlantic_council_scraper() + cap_scraper() + \
         csis_scraper() + heritage_scraper() + \
         middle_east_institute_scraper() + rand_scraper() + wilson_center_scraper() + \
-        politics_and_prose_scraper() + wapo_scraper()
+        politics_and_prose_scraper() + busboys_and_poets_scraper() + wapo_scraper()
     # carnegie_scraper()
     if not dynamodb:
         dynamodb = boto3.resource(
