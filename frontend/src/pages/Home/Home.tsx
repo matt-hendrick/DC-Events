@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import './Home.css';
 
 // Axios
 import axios from 'axios';
@@ -7,6 +6,7 @@ import axios from 'axios';
 // MUI
 import Container from '@material-ui/core/Container';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import { Theme, makeStyles } from '@material-ui/core';
 
 // Components
 import Card from '../../components/Card/Card';
@@ -23,7 +23,13 @@ interface Event {
   type: string;
 }
 
+const useStyles = makeStyles<Theme, object>((theme) => ({
+  ...(theme.classes as object),
+}));
+
 function Home() {
+  const classes = useStyles({} as object);
+
   const [eventList, setEventList] = useState<Event[]>([]);
   const [filters, setFilters] = useState<Map<string, boolean>>(new Map());
   const currentDateTime = Date.now();
@@ -93,8 +99,8 @@ function Home() {
   };
 
   return (
-    <Container className="home">
-      <div className="button-container">
+    <Container className={classes.home}>
+      <div className={classes.homeButtonContainer}>
         <MyButton onClick={() => toggleFilters('Think Tank')}>
           Filter Think Tanks
         </MyButton>

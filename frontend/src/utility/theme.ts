@@ -16,6 +16,15 @@ const colors = {
 const theme = {
   palette: colors,
   classes: {
+    home: {
+      paddingTop: '5vh',
+      paddingBottom: '5vh',
+    },
+    homeButtonContainer: {
+      paddingBottom: '5vh',
+      display: 'flex',
+      justifyContent: 'center',
+    },
     card: {
       border: `1px ${colors.secondary.main} solid`,
     },
