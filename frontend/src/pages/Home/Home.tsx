@@ -21,6 +21,7 @@ interface Event {
   link: string;
   uuid: string;
   type: string;
+  additionalInfo: string | null;
 }
 
 const useStyles = makeStyles<Theme, object>((theme) => ({
@@ -98,6 +99,7 @@ function Home() {
           link={item.link}
           key={item.uuid}
           type={item.type}
+          additionalInfo={item.additionalInfo}
         />
       );
     });

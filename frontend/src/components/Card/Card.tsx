@@ -12,13 +12,22 @@ interface Props {
   link: string;
   key: string;
   type: string;
+  additionalInfo: string | null;
 }
 
 const useStyles = makeStyles<Theme, object>((theme) => ({
   ...(theme.classes as object),
 }));
 
-function MyCard({ entity, title, dateTime, link, key, type }: Props) {
+function MyCard({
+  entity,
+  title,
+  dateTime,
+  link,
+  key,
+  type,
+  additionalInfo,
+}: Props) {
   const classes = useStyles({} as object);
   return (
     <Card className={classes.card} key={key}>
@@ -26,9 +35,16 @@ function MyCard({ entity, title, dateTime, link, key, type }: Props) {
         <Typography variant="h5">
           <Link href={link}>{title}</Link>
         </Typography>
-        <Typography color="secondary" gutterBottom variant="body1">
-          {entity}
-        </Typography>
+        <div className={classes.cardType}>
+          <Typography color="secondary" gutterBottom variant="body1">
+            {entity}
+          </Typography>
+          {additionalInfo ? (
+            <Typography color="secondary" gutterBottom variant="subtitle1">
+              {additionalInfo}
+            </Typography>
+          ) : null}
+        </div>
         <div className={classes.cardType}>
           <Typography color="secondary" variant="subtitle2">
             {dateTime}
