@@ -1,20 +1,41 @@
 <div class="home-wrapper-div">
   <div class="home-main-container">
     <div class="home-button-container">
-      <button mat-raised-button color="primary" class="my-button">
+      <button
+        mat-raised-button
+        color="primary"
+        class="my-button"
+        (click)="toggleFilters('Think Tank')"
+      >
         Filter Think Tanks
       </button>
-      <button mat-raised-button color="primary" class="my-button">
+      <button
+        mat-raised-button
+        color="primary"
+        class="my-button"
+        (click)="toggleFilters('Bookstore')"
+      >
         Filter Bookstores
       </button>
-      <button mat-raised-button color="primary" class="my-button">
+      <button
+        mat-raised-button
+        color="primary"
+        class="my-button"
+        (click)="toggleFilters('Newspaper')"
+      >
         Filter Newspapers
       </button>
-      <button mat-raised-button color="primary" class="my-button">
+      <button
+        mat-raised-button
+        color="primary"
+        class="my-button"
+        [disabled]="filters.size < 1"
+        (click)="clearFilters()"
+      >
         Reset Filters
       </button>
     </div>
-    <div *ngFor="let event of events">
+    <div *ngFor="let event of displayedEvents">
       <app-card [event]="event"></app-card>
     </div>
   </div>
