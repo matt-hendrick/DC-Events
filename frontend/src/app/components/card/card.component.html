@@ -7,7 +7,7 @@
     <p>{{ event.additionalInfo }}</p>
   </mat-card-content>
   <div class="card-type">
-    <mat-card-subtitle>{{ event.dateTime }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ event.dateTime | date: 'medium' }}</mat-card-subtitle>
     <mat-card-footer>{{ event.type }}</mat-card-footer>
   </div>
 </mat-card>
