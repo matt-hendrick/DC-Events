@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { Event } from '../event.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +13,8 @@ export class EventService {
   constructor(private httpClient: HttpClient) {}
 
   getEvents(): Observable<any> {
-    return this.httpClient.get<any>(this.apiUrl);
+    return this.httpClient
+      .get<any>(this.apiUrl)
+      .pipe(map((response) => (response = response.body.Items)));
   }
 }

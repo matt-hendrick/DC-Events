@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+
 import { Event } from '../../event.interface';
 import { EventService } from '../../services/event.service';
 
@@ -20,6 +20,6 @@ export class HomeComponent implements OnInit {
   onGetEvents(): void {
     this.eventService
       .getEvents()
-      .subscribe((response) => (this.events = response.body.Items));
+      .subscribe((events: Event[]) => (this.events = events));
   }
 }
