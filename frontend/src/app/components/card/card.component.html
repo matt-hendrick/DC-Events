@@ -1,0 +1,13 @@
+<mat-card *ngIf="event" class="card">
+  <mat-card-title
+    ><a href="{{ event.link }}">{{ event.title }}</a>
+  </mat-card-title>
+  <mat-card-subtitle>{{ event.entity }}</mat-card-subtitle>
+  <mat-card-content>
+    <p>{{ event.additionalInfo }}</p>
+  </mat-card-content>
+  <div class="card-type">
+    <mat-card-subtitle>{{ event.dateTime }}</mat-card-subtitle>
+    <mat-card-footer>{{ event.type }}</mat-card-footer>
+  </div>
+</mat-card>

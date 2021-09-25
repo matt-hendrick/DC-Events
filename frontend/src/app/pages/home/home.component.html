@@ -1,4 +1,21 @@
-<h2>Buttons</h2>
-<div *ngFor="let event of events">
-  <p>{{ event.title }}</p>
+<div class="home-wrapper-div">
+  <div class="home-main-container">
+    <div class="home-button-container">
+      <button mat-raised-button color="primary" class="my-button">
+        Filter Think Tanks
+      </button>
+      <button mat-raised-button color="primary" class="my-button">
+        Filter Bookstores
+      </button>
+      <button mat-raised-button color="primary" class="my-button">
+        Filter Newspapers
+      </button>
+      <button mat-raised-button color="primary" class="my-button">
+        Reset Filters
+      </button>
+    </div>
+    <div *ngFor="let event of events">
+      <app-card [event]="event"></app-card>
+    </div>
+  </div>
 </div>
