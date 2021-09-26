@@ -30,4 +30,15 @@ export const MOCK_EVENTS = [
     title:
       "P&P Live! Caoilinn Hughes and Mona Awad | THE WILD LAUGHTER and ALL'S WELL",
   },
+  {
+    entity: 'Washington Post',
+    eventID: '47b91cce-15ad-458e-acbf-af39babd124f',
+    dateTime: '2021-10-01 19:00:00',
+    unixTimeStamp: 1633114800,
+    link: 'https://www.eventbrite.com/e/pp-live-caoilinn-hughes-the-wild-laughter-with-mona-awad-tickets-169366572979',
+    additionalInfo: null,
+    type: 'Newspaper',
+    title:
+      "P&P Live! Caoilinn Hughes and Mona Awad | THE WILD LAUGHTER and ALL'S WELL",
+  },
 ];

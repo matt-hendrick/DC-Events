@@ -38,6 +38,6 @@ export class HomeComponent implements OnInit {
   }
 
   clearFilters(): void {
-    if (this.filters.size > 0) this.filters = new Set();
+    this.filters = new Set();
   }
 }

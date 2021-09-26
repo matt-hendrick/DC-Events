@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 import { EventService } from 'src/app/services/event.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
@@ -39,13 +44,54 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render 3 event cards and displayedEvents should contain mock event data', () => {
-    expect(compiled.querySelectorAll('app-card').length).toEqual(3);
-    expect(component.displayedEvents.length).toEqual(3);
+  it('should render event card for each event in MOCK_EVENTS and displayedEvents should contain mock event data', () => {
+    expect(compiled.querySelectorAll('app-card').length).toEqual(
+      MOCK_EVENTS.length
+    );
+    expect(component.displayedEvents.length).toEqual(MOCK_EVENTS.length);
     expect(component.displayedEvents[0].entity).toEqual(MOCK_EVENTS[0].entity);
+  });
+
+  it('toggleFilters and clearFilters properly filter out cards displayed', () => {
+    // Verifying that no filters are added and all cards are initially displayed
+    expect(component.filters.size).toBe(0);
+    expect(component.displayedEvents.length).toEqual(MOCK_EVENTS.length);
+
+    // Testing that each of the filters removes the correct number of cards and is added to filter set
+    component.toggleFilters('Bookstore');
+    expect(component.filters.size).toBe(1);
+    expect(component.displayedEvents.length).toEqual(2);
+
+    component.toggleFilters('Newspaper');
+    expect(component.filters.size).toBe(2);
+    expect(component.displayedEvents.length).toEqual(1);
+
+    component.toggleFilters('Think Tank');
+    expect(component.filters.size).toBe(3);
+    expect(component.displayedEvents.length).toEqual(0);
+
+    // testing that removing a filter from the set works properly
+    component.toggleFilters('Bookstore');
+    expect(component.filters.size).toBe(2);
+    expect(component.displayedEvents.length).toEqual(2);
+
+    // testing that clearFilters resets everything properly
+    component.clearFilters();
+    expect(component.filters.size).toBe(0);
+    expect(component.displayedEvents.length).toEqual(MOCK_EVENTS.length);
   });
 
   it('should render 4 buttons', () => {
     expect(compiled.querySelectorAll('button').length).toEqual(4);
   });
+
+  it('button click on filters runs toggleFilter func', fakeAsync(() => {
+    spyOn(component, 'toggleFilters');
+    let bookStoreFilterButton = compiled.querySelector(
+      '#bookstore-filter-button'
+    ) as HTMLButtonElement;
+    bookStoreFilterButton.click();
+    tick();
+    expect(component.toggleFilters).toHaveBeenCalled();
+  }));
 });

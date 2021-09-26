@@ -5,6 +5,7 @@
         mat-raised-button
         color="primary"
         class="my-button"
+        id="think-tank-filter-button"
         (click)="toggleFilters('Think Tank')"
       >
         Filter Think Tanks
@@ -13,6 +14,7 @@
         mat-raised-button
         color="primary"
         class="my-button"
+        id="bookstore-filter-button"
         (click)="toggleFilters('Bookstore')"
       >
         Filter Bookstores
@@ -21,6 +23,7 @@
         mat-raised-button
         color="primary"
         class="my-button"
+        id="newspaper-filter-button"
         (click)="toggleFilters('Newspaper')"
       >
         Filter Newspapers
@@ -29,6 +32,7 @@
         mat-raised-button
         color="primary"
         class="my-button"
+        id="clear-filter-button"
         [disabled]="filters.size < 1"
         (click)="clearFilters()"
       >
