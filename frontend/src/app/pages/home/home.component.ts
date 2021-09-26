@@ -9,6 +9,7 @@ import { EventService } from '../../services/event.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  loading: boolean = true;
   private events: Event[] = [];
   filters: Set<string> = new Set();
 
@@ -25,9 +26,10 @@ export class HomeComponent implements OnInit {
   }
 
   onGetEvents(): void {
-    this.eventService
-      .getEvents()
-      .subscribe((events: Event[]) => (this.events = events));
+    this.eventService.getEvents().subscribe((events: Event[]) => {
+      this.events = events;
+      this.loading = false;
+    });
   }
 
   toggleFilters(entityType: string): void {

@@ -35,6 +35,7 @@
         Reset Filters
       </button>
     </div>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
     <div *ngFor="let event of displayedEvents">
       <app-card [event]="event"></app-card>
     </div>
